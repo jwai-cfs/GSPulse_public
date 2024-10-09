@@ -2,7 +2,7 @@
 
 # Grad-Shafranov-Pulse (GSPulse)
 
-**Description:** GSPulse helps you design a time-dependent sequence of Grad-Shafranov plasma equilibria for a plasma pulse. Equilibria satisfy both force balance and circuit dynamics. The algorithm is described in detail in an arxiv [preprint](https://arxiv.org/abs/2306.13163), with peer-reviewed journal publication forthcoming. Please cite as appropriate if you use the code for any published work. 
+**Description:** GSPulse helps you design a time-dependent sequence of Grad-Shafranov plasma equilibria for a plasma pulse. Equilibria satisfy both force balance and circuit dynamics. The algorithm is described in detail in an arxiv [preprint](https://arxiv.org/abs/2306.13163) (note: updated description of the algorithm available in the `docs` folder), with peer-reviewed journal publication forthcoming. Please cite as appropriate if you use the code for any published work. 
 
 <p align="center">
   <img src="https://github.com/cfs-energy-internal/GSPulse/assets/137820499/f1800ff1-8f17-4100-84c0-797c60775327" width="600" />
