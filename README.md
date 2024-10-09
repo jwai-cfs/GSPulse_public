@@ -5,11 +5,10 @@
 **Description:** GSPulse helps you design a time-dependent sequence of Grad-Shafranov plasma equilibria for a plasma pulse. Equilibria satisfy both force balance and circuit dynamics. The algorithm is described in detail in an arxiv [preprint](https://arxiv.org/abs/2306.13163) (note: updated description of the algorithm available in the `docs` folder), with peer-reviewed journal publication forthcoming. Please cite as appropriate if you use the code for any published work. 
 
 <p align="center">
-  <img src="https://github.com/cfs-energy-internal/GSPulse/assets/137820499/f1800ff1-8f17-4100-84c0-797c60775327" width="600" />
+  <img src="https://github.com/user-attachments/assets/348b2799-f8e5-429b-ab4d-018c1e5bc334" width="600" />
   <br />
    <em>Time-dependent equilibrium trajectories.</em>  
 </p>
-
 
 ## Installation without MEQ
 GSPulse has 2 different options for performing the plasma picard iteration: a built-in option, or one that relies on the FBT/MEQ code. This is the installation option if access to MEQ is not available or required. The FBT/MEQ option has advantages in robustness and performance, but additional geometry and solver specifications must be provided. 
@@ -61,22 +60,23 @@ startup_gspulse.m
 All of the equilibria and coil current and voltage trajectories were saved to the `soln` struct. Running the script should have produced some plots of the coil currents and voltages, as well as an interactive GUI plot of the equilibria. 
 
 <p align="center">
-  <img src="https://github.com/jwai-cfs/GSPulseDesign/assets/137820499/c3c45ba4-d66f-432a-98e9-6fe1be565b6b" width="300" />
+  <img src="https://github.com/user-attachments/assets/1e0e32d9-b5ab-4228-9e07-deb614df22c6" width="300" />
   <br />
    <em>Sample equilibrium from SPARC.</em>  
 </p>
+
 
 ## Designing your own equilibria trajectories
 
 All of the pulse-specific configuration files are stored in the `tokamaks/<tokamak>/pulse<#>` folder. To design your own pulse, copy one of the other pulses and modify the contents of each of these scripts. Running the run_pulse.m just reads from each of these config scripts sequentially and then calls the equilibrium solver. 
 
 ```
-settings         = define_general_settings();
+settings         = define_settings();
 tok              = define_tok();
 shapes           = define_shapes();
 plasma_params    = define_plasma_params();
-targs            = define_optimization_targets();
-weights          = define_optimization_weights();
+targs            = define_targets();
+weights          = define_weights();
 init             = define_init();
 ```
 
@@ -111,10 +111,11 @@ python shape_gui.py
 
 This will open up the shape GUI. Edit the shaping parameters as desired, and then save the shape using the save button. 
 <p align="center">
-  <img src="https://github.com/cfs-energy-internal/GSPulse/assets/137820499/22ef9941-8e3f-4335-a663-9dfac06879e3" width="900" />   
+  <img src="https://github.com/user-attachments/assets/fc0f09e5-03cd-476c-b931-d8a592a7314b" width="900" />   
   <br />
   <em>Shape GUI.</em>
 </p>
+
 
 #### 4. define_plasma_params.m
 
@@ -129,7 +130,7 @@ This script defines values for the isoflux targets used by the optimization algo
 This script defines the weights used by the optimizer. Be aware that good weight choices may span orders of magnitude, because the controlled physical parameters are not normalized. The weight trajectories are time dependent which is important for scenario design. For example, if designing a scenario a where the plasma starts limited and then diverts, this might be a good choice for the weight on the x-point flux gradient, since it starts at zero and then increases (i.e. turning on the x-point). 
 
 <p align="center">
-  <img src="https://github.com/cfs-energy-internal/GSPulse/assets/137820499/75f56de5-0a71-4ebb-803e-b56b5db9dd5c" width="650" />   
+  <img src="https://github.com/user-attachments/assets/b9a5b3bb-04d3-47ac-9ad0-7861fcf578ca" width="650" />   
   <br />
   <em>Time-dependent X-point weight.</em>
 </p>
