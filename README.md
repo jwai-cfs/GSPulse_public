@@ -1,5 +1,12 @@
 *Note: This is the public version of the GSPulse repository, containing the core GSPulse algorithms without the MEQ submodule and only minimal examples. Additional examples pulses (including other tokamaks, scenarios, integration with TokSys, integration with MEQ) exist, even if not available here. Please be patient while more examples are created/approved for public release. Please feel free to reach out to Josiah Wai, jwai@cfs.energy for help in setting up your pulses or for submitting issues.*
 
+# Quickstart
+```
+Clone repository. Within Matlab:
+startup_gspulse
+[solution, gsp_inputs] = run_pulse('nstxu', 100);
+```
+
 # Grad-Shafranov-Pulse (GSPulse)
 
 **Description:** GSPulse helps you design a time-dependent sequence of Grad-Shafranov plasma equilibria for a plasma pulse. Equilibria satisfy both force balance and circuit dynamics. The algorithm is described in detail in an arxiv [preprint](https://arxiv.org/abs/2306.13163) (note: updated description of the algorithm available in the `docs` folder), with peer-reviewed journal publication forthcoming. Please cite as appropriate if you use the code for any published work. 

@@ -9,11 +9,14 @@ s.interval_t{1} = 0.05:0.02:1;
 s.niter = 5;  
 s.verbose = 1;
 s.picard_algo = 'gspulse';
-s.do_final_boundary_trace = 1;
+s.do_final_boundary_trace = 0;
 s.use_spline_basis = 1;
 s.spline_basis_ratio = 0.7;
 s.nvessmodes = 40;      
 s.specify_psibry_mode = 'ejima'; 
+s.calc_strike_pts = 0;
+s.dosave = 0;
+s.qpsolver = 'quadprog';
 
 s.fds2control = {};
 s.fds2control{end+1} = 'ic';                   % current in the PF coils
