@@ -6,6 +6,28 @@ autor: Sukhbinder
 
 Based on: http://uk.mathworks.com/matlabcentral/fileexchange/11837-fast-and-robust-curve-intersections
 Retrieved from (11/3/2023): https://github.com/sukhbinder/intersection/blob/master/intersect/intersect.py 
+
+MIT License
+
+Copyright (c) 2017 Sukhbinder Singh
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 """
 
 def _rect_inter_inner(x1, x2):
@@ -86,7 +108,7 @@ x,y=intersection(x1,y1,x2,y2)
         try:
             T[:, i] = np.linalg.solve(AA[:, :, i], BB[:, i])
         except:
-            T[:, i] = np.Inf
+            T[:, i] = np.inf
 
     in_range = (T[0, :] >= 0) & (T[1, :] >= 0) & (
         T[0, :] <= 1) & (T[1, :] <= 1)

@@ -410,76 +410,62 @@ class ShapeApp:
         METHOD: update_plots
         DESCRIPTION:                
         """      
-                          
-        try:                  
-            s = self.update_data()
+                           
+        s = self.update_data()
 
-            # plot boundary shape
-            for i in range(len(self.axs)):
-                ax = self.axs[i]
-                
-                # remove old lines            
-                if not self.hold_shape.get():
-                    for artist in ax.lines + ax.collections + ax.texts:
-                        artist.remove()
-                
-                # plot limiter and new shape
-                self.plot_limiter(ax)
-                ax.plot(s['rb'], s['zb'], linewidth=1, color='red')   
-                
-                # plot manually-defined (r,z) points
-                for k in range(self.n_manual_control_pts):
-                    rkey = 'r' + str(k+1)
-                    zkey = 'z' + str(k+1)
-                    ax.scatter(s[rkey], s[zkey], s=15, c='blue', alpha=1, marker='o')
+        # plot boundary shape
+        for i in range(len(self.axs)):
+            ax = self.axs[i]
+            
+            # remove old lines            
+            if not self.hold_shape.get():
+                for artist in ax.lines + ax.collections + ax.texts:
+                    artist.remove()
+            
+            # plot limiter and new shape
+            self.plot_limiter(ax)
+            ax.plot(s['rb'], s['zb'], linewidth=1, color='red')   
+            
+            # plot manually-defined (r,z) points
+            for k in range(self.n_manual_control_pts):
+                rkey = 'r' + str(k+1)
+                zkey = 'z' + str(k+1)
+                ax.scatter(s[rkey], s[zkey], s=15, c='blue', alpha=1, marker='o')
 
-                # plot x-points
-                for k in range(self.n_xpts):
-                    rkey = 'rx' + str(k+1)
-                    zkey = 'zx' + str(k+1)
-                    ax.scatter(s[rkey], s[zkey], s=50, c='red', alpha=1, marker='x')
-                
-                # plot control segments and points
-                segs = s['segs']
-                if self.plot_segs.get():
-                    ax.scatter(s['rcp'], s['zcp'], s=15, c='blue', alpha=1, marker='.')
-                    ax.plot(segs[:,[0,2]].T, segs[:,[1,3]].T, c='blue', alpha=0.3, linewidth=0.5)        
-                
-                # labels
-                if self.label_control_pts.get():
-                    for i in range(len(s['rcp'])):
-                        txt = str(i+1)
-                        ax.annotate(txt, (s['rcp'][i], s['zcp'][i]))
-                
-                if self.label_manual_control_pts.get():
-                    for i in range(8):
-                        txt = str(i+1)
-                        rkey = 'r' + txt
-                        zkey = 'z' + txt
-                        ax.annotate(txt, (s[rkey], s[zkey]))
+            # plot x-points
+            for k in range(self.n_xpts):
+                rkey = 'rx' + str(k+1)
+                zkey = 'zx' + str(k+1)
+                ax.scatter(s[rkey], s[zkey], s=50, c='red', alpha=1, marker='x')
+            
+            # plot control segments and points
+            segs = s['segs']
+            if self.plot_segs.get():
+                ax.scatter(s['rcp'], s['zcp'], s=15, c='blue', alpha=1, marker='.')
+                ax.plot(segs[:,[0,2]].T, segs[:,[1,3]].T, c='blue', alpha=0.3, linewidth=0.5)        
+            
+            # labels
+            if self.label_control_pts.get():
+                for i in range(len(s['rcp'])):
+                    txt = str(i+1)
+                    ax.annotate(txt, (s['rcp'][i], s['zcp'][i]))
+            
+            if self.label_manual_control_pts.get():
+                for i in range(8):
+                    txt = str(i+1)
+                    rkey = 'r' + txt
+                    zkey = 'z' + txt
+                    ax.annotate(txt, (s[rkey], s[zkey]))
 
-                if self.label_xpts.get():
-                    for i in range(4):
-                        txt = str(i+1)
-                        rkey = 'rx' + txt
-                        zkey = 'zx' + txt
-                        ax.annotate(txt, (s[rkey], s[zkey]))
+            if self.label_xpts.get():
+                for i in range(4):
+                    txt = str(i+1)
+                    rkey = 'rx' + txt
+                    zkey = 'zx' + txt
+                    ax.annotate(txt, (s[rkey], s[zkey]))
 
-            self.canvas.draw()  
+        self.canvas.draw()  
 
-        except:
-            # plot boundary shape
-            for i in range(len(self.axs)):
-                ax = self.axs[i]
-                
-                # remove old lines            
-                if not self.hold_shape.get():
-                    for artist in ax.lines + ax.collections + ax.texts:
-                        artist.remove()
-                
-                # plot limiter
-                self.plot_limiter(ax)
-                
                         
         
 
@@ -550,7 +536,7 @@ def main():
 
     parser = argparse.ArgumentParser(description='Specify a tokamak geometry to load')
     parser.add_argument('-tok', dest='tokamak', default='nstxu', 
-        help="Specify a tokamak. Supported options are 'nstxu' [default]")
+        help="Specify a tokamak. Supported options are 'nstxu' [default] and 'mastu'")
     args = parser.parse_args()
 
     app = ShapeApp(args.tokamak)
