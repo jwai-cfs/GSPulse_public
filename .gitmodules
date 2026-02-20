@@ -1,0 +1,6 @@
+[submodule "submodules/meq"]
+	path = submodules/meq
+	url = https://gitlab.epfl.ch/spc/public/meq/meq.git
+[submodule "submodules/scs-matlab"]
+	path = submodules/scs-matlab
+	url = https://github.com/bodono/scs-matlab.git
