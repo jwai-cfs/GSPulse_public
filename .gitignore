@@ -16,23 +16,8 @@
 *.l
 *.slxc
 *.gif
+*.lock
 *#
-
-# exceptions (specific files to track)
-
-# nstxu data exceptions
-!/tokamaks/nstxu/device/nstxu_obj_config.mat
-!/tokamaks/nstxu/device/sysid_fits.mat
-!/tokamaks/nstxu/data/eq204660_030.mat
-!/tokamaks/nstxu/data/eqLIM.mat
-!/tokamaks/nstxu/data/eqLSN.mat
-!/tokamaks/nstxu/data/eqUSN.mat
-
-# mastu data exceptions
-!/tokamaks/mastu/device/mastu_obj_6565.mat
-!/tokamaks/mastu/data/Ic48092.mat
-!/tokamaks/mastu/data/psibry48092.mat
-
-
-
-
+*.h5
+*octave-workspace
+**/build/*

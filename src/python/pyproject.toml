@@ -1,0 +1,58 @@
+[project]
+name = "gspulse"
+version = "1.0.0"
+description = ""
+authors = [
+    { name = "jwai-cfs", email = "jwai@cfs.energy" }
+]
+readme = "README.md"
+# NOTE(mveldhoen, 10/21/2025): Disallow python 3.14 for now, because no corresponding wheels for cvxopt exist yet.
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "oct2py>=5.8.0",
+    "qpsolvers>=4.4.0",
+    "cvxopt>=1.3.2",
+    "h5py>=3.12.1",
+    "pydantic>=2.10.6",
+    "matplotlib>=3.10.5",
+    "ipykernel>=6.30.1",
+    "ipython~=8.0", # NOTE(mveldhoen, 10/21/2025): fix ipython to the 8.x.y major release, the 9.x.y is incompatible with oct2py 5.8.0
+    "scipy>=1.16.3",
+    "gitignore-parser>=0.1.13",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.0",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 140
+
+[tool.ruff.lint]
+preview = false # Don't use experimental ruff rules
+select = ["ALL"]
+ignore = [
+  "ANN401", # Allow type Any
+  "D105", # Don't require docstrings on magic methods
+  "D413", # Allow no black line after last section in docstring
+  "DOC201", # enable when https://github.com/astral-sh/ruff/pull/12675 is fixed
+  "EM101", # Allow string literals in exceptions
+  "EM102", # Allow f-strings in exceptions
+  "G004", # Allow using f-strings in log messages.
+  "TRY003", # Want to pass messages into exceptions
+  "TD003", # do not require todo comments to have a link
+  "FIX002", # Allow todo lines
+  "RET503", # broken for NoReturn see https://github.com/astral-sh/ruff/issues/5474 
+  "S4", # creates a lot of noise for us
+  "S6", # creates a lot of noise for us
+  "COM812",
+  "ISC001",
+  "PLE1205", # logging linter expects legacy % formatting strings, see https://github.com/astral-sh/ruff/issues/13390
+]
+pydocstyle.convention = "google"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
